@@ -38,6 +38,5 @@ namespace HotelProject.WebUI.Controllers
            
         }
 
-
 	}
 }
