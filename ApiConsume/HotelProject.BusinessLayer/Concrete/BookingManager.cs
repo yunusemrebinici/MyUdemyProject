@@ -17,7 +17,24 @@ namespace HotelProject.BusinessLayer.Concrete
         {
             _bookDal = bookingDal;
         }
-        public void TDelete(Booking t)
+
+		public void TBookingAdminStatusTrue(int id)
+		{
+			_bookDal.BookingAdminStatusTrue(id);
+		}
+
+		public void TBookingReservationCanceled(int id)
+		{
+			_bookDal.BookingReservationCanceled(id);
+
+		}
+
+		public void TBookingWaitforReservation(int id)
+		{
+            _bookDal.BookingWaitforReservation(id);
+		}
+
+		public void TDelete(Booking t)
         {
             _bookDal.Delete(t);
         }

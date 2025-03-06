@@ -7,7 +7,13 @@ using System.Threading.Tasks;
 
 namespace HotelProject.DataAccessLayer.Abstract
 {
-    public interface IBookingDal:IGenericDal<Booking>
-    {
-    }
+	public interface IBookingDal : IGenericDal<Booking>
+	{
+		void BookingAdminStatusTrue(int id);
+
+		void BookingReservationCanceled(int id);
+
+		void BookingWaitforReservation(int id);
+
+	}
 }
