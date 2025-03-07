@@ -1,6 +1,8 @@
 ﻿using HotelProject.BusinessLayer.Abstract;
+using HotelProject.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace HotelProject.WebApi.Controllers
 {
@@ -19,5 +21,13 @@ namespace HotelProject.WebApi.Controllers
 		{
 			return Ok(_contactService.TGetList());
 		}
-    }
+
+		[HttpPost]
+		public IActionResult CreateContact(Contact contact)
+		{
+			contact.Date=DateTime.Now;
+			_contactService.TInsert(contact);
+			return Ok();
+		}
+	}
 }
