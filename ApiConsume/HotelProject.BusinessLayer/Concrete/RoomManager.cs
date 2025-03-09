@@ -19,8 +19,8 @@ namespace HotelProject.BusinessLayer.Concrete
 		}
 
 		public void TDelete(Room t)
-		{
-			_roomDal.Delete(t);
+		{		
+			_roomDal.Delete(t);		
 		}
 
 		public Room TGetById(int id)
