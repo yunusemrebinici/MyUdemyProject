@@ -1,4 +1,5 @@
 ﻿using HotelProject.WebUI.Dtos.AboutDtos;
+using HotelProject.WebUI.Dtos.Contact;
 using HotelProject.WebUI.Dtos.RoomDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -40,7 +41,7 @@ namespace HotelProject.WebUI.Controllers
 			if (responseMessage.IsSuccessStatusCode)
 			{
 				var jsonData = await responseMessage.Content.ReadAsStringAsync();
-				var values = JsonConvert.DeserializeObject<UpdateAboutDto>(jsonData);
+				var values = JsonConvert.DeserializeObject<UpdateRoomDto>(jsonData);
 				return View(values);
 
 			}
@@ -48,7 +49,7 @@ namespace HotelProject.WebUI.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> UpdateRoom(UpdateAboutDto model)
+		public async Task<IActionResult> UpdateRoom(UpdateRoomDto model)
 		{
 			var client = _httpClientFactory.CreateClient();
 			var jsonData = JsonConvert.SerializeObject(model);
@@ -61,5 +62,36 @@ namespace HotelProject.WebUI.Controllers
 
 			return View();
 		}
-	}
+
+		[HttpGet]
+		public PartialViewResult AddRoom()
+		{
+			return PartialView();
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> AddRoom(CreateRoomDto room)
+		{
+			var jsonData = JsonConvert.SerializeObject(room);
+			StringContent content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+			var client = _httpClientFactory.CreateClient();
+			var responseMessage = await client.PostAsync("http://localhost:21924/api/Room", content);
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				return RedirectToAction("Index");
+			}
+			return View();
+		}
+
+        public async Task<IActionResult> DeleteRoom(int id)
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.DeleteAsync($"http://localhost:21924/api/Room/{id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+    }
 }
