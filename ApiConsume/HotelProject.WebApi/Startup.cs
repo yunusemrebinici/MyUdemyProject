@@ -52,8 +52,11 @@ namespace HotelProject.WebApi
 			services.AddScoped<IContactService, ContactManager>();
 			services.AddScoped<IContactDal, EfContactDal>();
 
+            services.AddScoped<IGuestService, GuestManager>();
+            services.AddScoped<IGuestDal, EfGuestDal>();
 
-			services.AddAutoMapper(typeof(Startup));
+
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddCors(opt =>
             {
