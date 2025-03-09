@@ -1,4 +1,5 @@
-﻿using HotelProject.EntityLayer.Concrete;
+﻿using HotelProject.DtoLayer.AboutDtos;
+using HotelProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace HotelProject.DataAccessLayer.Abstract
 {
 	public interface IAboutDal:IGenericDal<About>
 	{
+		 void UpdateAboutWithDto(UpdateAboutDto updateAboutDto);
 	}
 }

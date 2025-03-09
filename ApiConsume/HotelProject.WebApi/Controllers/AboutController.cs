@@ -1,4 +1,5 @@
 ﻿using HotelProject.BusinessLayer.Abstract;
+using HotelProject.DtoLayer.AboutDtos;
 using HotelProject.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -36,9 +37,9 @@ namespace HotelProject.WebApi.Controllers
 		}
 
 		[HttpPut]
-		public IActionResult UpdateAbout(About About)
+		public IActionResult UpdateAbout(UpdateAboutDto About)
 		{
-			_aboutService.TUpdate(About);
+			_aboutService.TUpdateAboutWithDto(About);
 			return Ok();
 
 		}

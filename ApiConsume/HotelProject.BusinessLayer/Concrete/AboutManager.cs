@@ -1,5 +1,6 @@
 ﻿using HotelProject.BusinessLayer.Abstract;
 using HotelProject.DataAccessLayer.Abstract;
+using HotelProject.DtoLayer.AboutDtos;
 using HotelProject.EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -45,5 +46,10 @@ namespace HotelProject.BusinessLayer.Concrete
 		{
 			_aboutDal.Update(t);
 		}
-	}
+
+        public void TUpdateAboutWithDto(UpdateAboutDto updateAboutDto)
+        {
+			_aboutDal.UpdateAboutWithDto(updateAboutDto);
+        }
+    }
 }
