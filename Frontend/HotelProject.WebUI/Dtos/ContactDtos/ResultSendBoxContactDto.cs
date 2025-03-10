@@ -4,6 +4,8 @@ namespace HotelProject.WebUI.Dtos.ContactDtos
 {
 	public class ResultSendBoxContactDto
 	{
+		public int SendMessageID { get; set; }
+
 		public string ReceiverName { get; set; }
 
 		public string ReceiverMail { get; set; }

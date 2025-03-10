@@ -1,9 +1,8 @@
-﻿@model List<ResultSendBoxContactDto>
+﻿@model ResultSendBoxContactDto
 @{
-	ViewData["Title"] = "SendBox";
+	ViewData["Title"] = "SendBoxDetailById";
 	Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
 }
-
 
 <div class="card-body">
 
@@ -26,26 +25,34 @@
 
 			</div>
 		</div>
-		@foreach (var item in Model)
-		{
-			<div class="email-list m-t-15">
-				<div class="message">
-					<a href="/AdminContact/SendBoxDetailById/@item.SendMessageID">
-						<div class="col-mail col-mail-1">
-							<div class="email-checkbox">
-								<input type="checkbox" id="chk2">
-								<label class="toggle" for="chk2"></label>
-							</div><span class="star-toggle ti-star"></span>
-						</div>
-						<div class="col-mail col-mail-2">
-							<div class="subject"><b style="color: red;" >Alıcı: @item.ReceiverName</b> <b>Konu: @item.Title </b></div>
-							<div class="date">@item.Date.ToString("dd-MMM-yyyy")</div>
-						</div>
-					</a>
+
+
+		<div class="read-content">
+			<div class="media pt-5">
+				<img class="mr-3 rounded-circle" src="/adminweb/images/avatar/1.jpg">
+				<div class="media-body">
+					<h5 class="m-b-3">@Model.SenderName</h5>
+					<p class="m-b-2">@Model.Date.ToString("ddd-MMM-yyyy")</p>
+				</div>
+
+			</div>
+			<hr>
+			<div class="media mb-4 mt-1">
+				<div class="media-body">
+				
+					<h4 class="m-0 text-primary">@Model.Title</h4><small class="text-muted">Alıcı: @Model.ReceiverMail</small>
 				</div>
 			</div>
-		}
+			<h5 class="m-b-15">Selam ,@Model.ReceiverName</h5>
+			
+			<p>
+				@Model.Content
+			</p>
+			
+		</div>
+
 
 
 	</div>
 </div>
+
