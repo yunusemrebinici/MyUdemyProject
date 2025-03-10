@@ -14,7 +14,7 @@ namespace HotelProject.WebUI.ValidationRules.GuestValidatonRules
             RuleFor(x => x.Surname).MinimumLength(2).WithMessage("Minimum 2 karakter olmalı");
 
             RuleFor(x => x.City).NotEmpty().WithMessage("Şehir Boş Geçilemez");
-            RuleFor(x => x.City).MinimumLength(2).WithMessage("Minimum 4 karakter olmalı");
+            RuleFor(x => x.City).MinimumLength(4).WithMessage("Minimum 4 karakter olmalı");
         }
     }
 }
