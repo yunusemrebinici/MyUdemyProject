@@ -1,0 +1,91 @@
+﻿@model CreateSendMessage
+@{
+	ViewData["Title"] = "AddSendMessage";
+	Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+
+
+<div class="card-body">
+
+	<div class="email-left-box">
+		<a href="email-compose.html" class="btn btn-primary btn-block">Yeni Mesaj Oluştur</a>
+
+		@await Html.PartialAsync("_SideBarAdminContactPartial")
+
+		<h5 class="mt-5 m-b-10">Kategoriler</h5>
+
+		@await Html.PartialAsync("_SideBarAdminContactCategoryPartial")
+	</div>
+
+	<div class="email-right-box">
+		<div class="toolbar" role="toolbar">
+			<div class="btn-group m-b-20">
+				<button type="button" class="btn btn-light">
+					<i class="fa fa-archive"></i>
+				</button>
+				<button type="button" class="btn btn-light">
+					<i class="fa fa-exclamation-circle"></i>
+				</button>
+				<button type="button" class="btn btn-light">
+					<i class="fa fa-trash"></i>
+				</button>
+			</div>
+			<div class="btn-group m-b-20">
+				<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-folder"></i>  <b class="caret m-l-5"></b>
+				</button>
+				<div class="dropdown-menu">
+
+					<a class="dropdown-item" href="javascript: void(0);">Promosyon</a>
+					<a class="dropdown-item" href="javascript: void(0);">Güncelle</a>
+					<a class="dropdown-item" href="javascript: void(0);">Forum</a>
+				</div>
+			</div>
+			<div class="btn-group m-b-20">
+				<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-tag"></i>  <b class="caret m-l-5"></b>
+				</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="javascript: void(0);">Sosyal</a>
+					<a class="dropdown-item" href="javascript: void(0);">Promosyon</a>
+					<a class="dropdown-item" href="javascript: void(0);">Forum</a>
+				</div>
+			</div>
+			<div class="btn-group m-b-20">
+				<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown">
+					Daha Fazla <span class="caret m-l-5"></span>
+				</button>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="javascript: void(0);">Task Ekle</a>
+					<a class="dropdown-item" href="javascript: void(0);">Yıldızla</a>
+				</div>
+			</div>
+		</div>
+		<div class="compose-content mt-5">
+			<form method="post" asp-action="AddSendMessage" asp-controller="AdminContact">
+				<div class="form-group">
+					<input type="text" class="form-control bg-transparent" placeholder="Alıcının Mail Adresi.." asp-for="ReceiverMail">
+				</div>
+
+				<div class="form-group">
+					<input type="text" class="form-control bg-transparent" placeholder="Alıcının İsmi .." asp-for="ReceiverName">
+				</div
+
+				<div class="form-group">
+					<input type="text" class="form-control bg-transparent" placeholder="Konu" asp-for="Title">
+				</div>
+
+				<div class="form-group">
+					<textarea class="textarea_editor form-control bg-light" rows="15" placeholder="Mesajı Giriniz ..." asp-for="Content"></textarea>
+				</div>
+				<button class="btn btn-primary"> Gönder</button>
+				
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+
