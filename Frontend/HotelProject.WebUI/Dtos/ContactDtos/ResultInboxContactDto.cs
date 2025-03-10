@@ -2,8 +2,9 @@
 
 namespace HotelProject.WebUI.Dtos.ContactDtos
 {
-    public class CreateContactDto
-    {
+	public class ResultInboxContactDto
+	{
+		public int ContactID { get; set; }
 
 		public string Name { get; set; }
 
