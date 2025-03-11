@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace HotelProject.WebUI.Controllers
 {
-	public class AdminLayoutController : Controller
+    [Authorize]
+    public class AdminLayoutController : Controller
 	{
 		public IActionResult _AdminLayout()
 		{

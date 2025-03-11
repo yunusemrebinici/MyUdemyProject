@@ -1,11 +1,13 @@
 ﻿using HotelProject.DataAccessLayer.EntitiyFramework;
 using HotelProject.WebUI.Dtos.LoginDtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace HotelProject.WebUI.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
