@@ -25,9 +25,15 @@ namespace HotelProject.WebUI.Controllers
         {
 			var client = _httpClientFactory.CreateClient();
 			var responseMessage = await client.GetAsync("http://localhost:21924/api/Contact");
-			if (responseMessage.IsSuccessStatusCode)
+            var responseMessage2 = await client.GetAsync("http://localhost:21924/api/Contact/GetContactCount");
+            var responseMessage3 = await client.GetAsync("http://localhost:21924/api/SendMessage/GetSendMessageCount");
+            if (responseMessage.IsSuccessStatusCode)
 			{
 				var jsonData = await responseMessage.Content.ReadAsStringAsync();
+				var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
+				var jsonData3 = await responseMessage3.Content.ReadAsStringAsync();
+				ViewBag.GetContactCount = jsonData2;
+				ViewBag.GetSendMessageCount = jsonData3;
 				var values = JsonConvert.DeserializeObject<List<ResultInboxContactDto>>(jsonData);
 				return View(values);
 			}
@@ -105,6 +111,7 @@ namespace HotelProject.WebUI.Controllers
 
 		public PartialViewResult _SideBarAdminContactPartial()
         {
+         
             return PartialView();
         }
 
