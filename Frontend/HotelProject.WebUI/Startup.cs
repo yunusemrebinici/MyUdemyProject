@@ -53,8 +53,7 @@ namespace HotelProject.WebUI
                 options.LoginPath = "/Login/Index";
 
             });
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-            .AddCookie();
+          
 
         }
 
@@ -69,6 +68,7 @@ namespace HotelProject.WebUI
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.UseStatusCodePagesWithReExecute("/ErrorPage/Index","?code={0}");
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseRouting();
