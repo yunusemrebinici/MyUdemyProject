@@ -28,5 +28,7 @@ namespace HotelProject.WebUI.Dtos.RegisterDtos
 		[Compare(("Password"),ErrorMessage="Şifreler Uyuşmuyor")]
 
 		public string ConfirmPassword { get; set; }
+
+		
 	}
 }
