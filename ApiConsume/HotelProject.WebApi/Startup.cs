@@ -62,6 +62,9 @@ namespace HotelProject.WebApi
 			services.AddScoped<IMessageCategoryService, MessageCategoryManager>();
 			services.AddScoped<IMessageCategoryDal, EfMessageCategoryDal>();
 
+			services.AddScoped<IWorkLocationService, WorkLocationManager>();
+			services.AddScoped<IWorkLocationDal, EfWorkLocationDal>();
+
 
 			services.AddAutoMapper(typeof(Startup));
 
