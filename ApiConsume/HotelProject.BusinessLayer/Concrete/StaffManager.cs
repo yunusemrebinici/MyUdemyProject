@@ -28,6 +28,11 @@ namespace HotelProject.BusinessLayer.Concrete
 			return _staffDal.GetById(id);
 		}
 
+		public async Task<List<Staff>> TGetLast4Staff()
+		{
+			return await _staffDal.GetLast4Staff();
+		}
+
 		public List<Staff> TGetList()
 		{
 			return _staffDal.GetList();

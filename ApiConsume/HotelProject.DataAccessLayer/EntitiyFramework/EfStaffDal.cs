@@ -21,7 +21,7 @@ namespace HotelProject.DataAccessLayer.EntitiyFramework
 
 		public async Task<List<Staff>> GetLast4Staff()
 		{
-			return await _context.Staff.OrderByDescending(x=>x.StaffID).Take(3).ToListAsync();
+			return await _context.Staff.OrderByDescending(x=>x.StaffID).Take(4).ToListAsync();
 		}
 
 		public  async Task< int> GetStaffCount()

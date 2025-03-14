@@ -11,5 +11,8 @@ namespace HotelProject.BusinessLayer.Abstract
 	public interface IAboutService:IGenericService<About>
 	{
         void TUpdateAboutWithDto(UpdateAboutDto updateAboutDto);
-    }
+
+		
+
+	}
 }

@@ -2,6 +2,7 @@
 using HotelProject.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace HotelProject.WebApi.Controllers
 {
@@ -51,6 +52,11 @@ namespace HotelProject.WebApi.Controllers
 		{
 			var values = _staffService.TGetById(id);
 			return Ok(values);
+		}
+		[HttpGet("GetLast4Staff")]
+		public async Task<IActionResult> GetLast4Staff()
+		{
+			return Ok( await _staffService.TGetLast4Staff());
 		}
 	}
 }
