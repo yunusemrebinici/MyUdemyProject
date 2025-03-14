@@ -33,6 +33,22 @@ namespace HotelProject.WebUI.ViewComponents.Dashboard
 
 			#endregion
 
+			#region roomCount
+			var roomResponseMessage = await client.GetAsync("http://localhost:21924/api/DashboardWidgets/GetRoomCount");
+			var roomJsonData = await roomResponseMessage.Content.ReadAsStringAsync();
+			var roomValues = JsonConvert.DeserializeObject(roomJsonData);
+			ViewBag.roomValues = roomValues;
+
+			#endregion
+
+			#region guestCount
+			var guestResponseMessage = await client.GetAsync("http://localhost:21924/api/DashboardWidgets/GetGuestCount");
+			var guestJsonData = await guestResponseMessage.Content.ReadAsStringAsync();
+			var guestValues = JsonConvert.DeserializeObject(guestJsonData);
+			ViewBag.guestValues = guestValues;
+
+			#endregion
+
 			return View();
 		
 		}
