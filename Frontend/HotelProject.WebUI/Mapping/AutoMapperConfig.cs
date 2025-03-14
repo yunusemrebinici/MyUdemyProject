@@ -37,8 +37,9 @@ namespace HotelProject.WebUI.Mapping
             CreateMap<CreateBookingDto,Booking>().ReverseMap();
 
             CreateMap<ResultBookingAdminDto,Booking>().ReverseMap();
+			CreateMap<ResultLast4BookingDto, Booking>().ReverseMap();
 
-            CreateMap<CreateContactDto,Contact>().ReverseMap();
+			CreateMap<CreateContactDto,Contact>().ReverseMap();
             CreateMap<ResultInboxContactDto,Contact>().ReverseMap();
             CreateMap<ResultSendBoxContactDto,Contact>().ReverseMap();
 
@@ -47,6 +48,8 @@ namespace HotelProject.WebUI.Mapping
             CreateMap<UpdateRoomDto,Room>().ReverseMap();
 
             CreateMap<ResultLast4StaffDto, Staff>().ReverseMap();
+
+            
 
            
         }
