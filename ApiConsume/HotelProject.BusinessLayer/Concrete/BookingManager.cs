@@ -18,6 +18,11 @@ namespace HotelProject.BusinessLayer.Concrete
             _bookDal = bookingDal;
         }
 
+		public async Task<List<Booking>> TGetLast4Booking()
+		{
+			return await _bookDal.GetLast4Booking();
+		}
+
 		public void TBookingAdminStatusTrue(int id)
 		{
 			_bookDal.BookingAdminStatusTrue(id);

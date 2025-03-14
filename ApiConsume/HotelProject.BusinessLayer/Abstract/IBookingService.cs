@@ -16,5 +16,7 @@ namespace HotelProject.BusinessLayer.Abstract
 		void TBookingWaitforReservation(int id);
 
 		Task<int> TGetBookingCount();
+
+		Task<List<Booking>> TGetLast4Booking();
 	}
 }

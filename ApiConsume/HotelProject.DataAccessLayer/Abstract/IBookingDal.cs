@@ -17,5 +17,7 @@ namespace HotelProject.DataAccessLayer.Abstract
 
 		 Task<int> GetBookingCount();
 
+		 Task<List<Booking>> GetLast4Booking();
+
 	}
 }

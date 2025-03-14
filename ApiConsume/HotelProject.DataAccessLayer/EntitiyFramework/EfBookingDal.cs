@@ -50,5 +50,10 @@ namespace HotelProject.DataAccessLayer.EntitiyFramework
 					 
 			return await _context.Bookings.CountAsync();
 		}
+
+		public async Task<List<Booking>> GetLast4Booking()
+		{
+			return await _context.Bookings.OrderByDescending(x=>x.BookingID).Take(4).ToListAsync();
+		}
 	}
 }

@@ -2,6 +2,7 @@
 using HotelProject.EntityLayer.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace HotelProject.WebApi.Controllers
 {
@@ -70,6 +71,13 @@ namespace HotelProject.WebApi.Controllers
 		{
 			_bookingService.TBookingWaitforReservation(id);
 			return Ok();
+
+		}
+		[HttpGet("GetLast4Booking")]
+		public async Task< IActionResult> GetLast4Booking()
+		{
+			
+			return Ok(await _bookingService.TGetLast4Booking());
 
 		}
 	}
