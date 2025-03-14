@@ -27,7 +27,12 @@ namespace HotelProject.BusinessLayer.Concrete
             return _guestDal.GetById(id);   
         }
 
-        public List<Guest> TGetList()
+		public async Task<int> TGetGuestCount()
+		{
+			return await _guestDal.GetGuestCount();
+		}
+
+		public List<Guest> TGetList()
         {
            return _guestDal.GetList();
         }
