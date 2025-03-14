@@ -1,6 +1,8 @@
 ﻿using HotelProject.BusinessLayer.Abstract;
+using HotelProject.BusinessLayer.Models;
 using HotelProject.DataAccessLayer.Abstract;
 using HotelProject.DataAccessLayer.EntitiyFramework;
+using HotelProject.DataAccessLayer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,9 +45,21 @@ namespace HotelProject.BusinessLayer.Concrete
             throw new NotImplementedException();
         }
 
-        public List<AppUser> TUserListWithWorkLocation()
-        {
-           return _appUserDal.UserListWithWorkLocation();
-        }
-    }
+		public List<AppUserWithLocationViewModel> TUserListWithWorkLocation()
+		{
+			return _appUserDal.UserListWithWorkLocation().Select(x=> new AppUserWithLocationViewModel
+            {
+                Name = x.Name,
+                Surname = x.Surname,
+                City = x.City,
+                ImageUrl = x.ImageUrl,
+                WorkLocationCity = x.WorkLocationCity,
+                WorkLocationName = x.WorkLocationName,
+                WorkLocationID = x.WorkLocationID,
+                Country = x.Country,
+                Gender= x.Gender,
+
+            }).ToList();
+		}
+	}
 }

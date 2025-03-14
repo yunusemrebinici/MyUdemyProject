@@ -1,4 +1,5 @@
-﻿using HotelProject.DataAccessLayer.EntitiyFramework;
+﻿using HotelProject.BusinessLayer.Models;
+using HotelProject.DataAccessLayer.EntitiyFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace HotelProject.BusinessLayer.Abstract
 {
     public interface IAppUserService:IGenericService<AppUser>
     {
-        public List<AppUser> TUserListWithWorkLocation();
+        public List<AppUserWithLocationViewModel> TUserListWithWorkLocation();
     }
 }

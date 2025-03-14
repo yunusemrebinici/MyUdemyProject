@@ -1,4 +1,4 @@
-﻿@model List<ResultAppUserListDto>
+﻿@model List<ResultAppUserDto>
 @{
 	ViewData["Title"] = "Index";
 	Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
@@ -17,9 +17,9 @@
 									<th>Şehir</th>
 									<th>Ülke</th>
 									<th>Cinsiyet</th>
+									<th>Çalıştığı Kurum</th>
+									<th>Kurum Lokasyonu</th>
 									<th>Durum</th>
-									<th>Sil</th>
-									<th>Güncelle</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -30,15 +30,16 @@
 										<td>@item.City</td>
 										<td>@item.Country</td>
 										<td>@item.Gender</td>
-										<td><i class="fa fa-circle-o text-success  mr-2"></i> Aktif</td>
-										<td><a href="/AdminUsers/DeleteUser/" class="btn btn-danger">Sil</a></td>
-										<td><a href="/AdminUsers/UpdateUser/" class="btn btn-success">Güncelle</a></td>
+										<td>@item.WorkLocationName</td>
+										<td>@item.WorkLocationCity</td>
+
+										<td><i class="fa fa-circle-o text-success  mr-2"></i> Aktif</td>										
 
 									</tr>
 								}
 							</tbody>
 							<br />
-							<td><a href="/AdminUsers/AddUser" class="btn btn-primary">Yeni Kullanıcı</a></td>
+							<td><a href="#" class="btn btn-primary">Yeni Kullanıcı</a></td>
 						</table>
 					</div>
 				</div>

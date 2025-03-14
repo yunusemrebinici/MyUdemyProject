@@ -1,5 +1,6 @@
 ﻿using HotelProject.DataAccessLayer.Abstract;
 using HotelProject.DataAccessLayer.Concrete;
+using HotelProject.DataAccessLayer.Models;
 using HotelProject.DataAccessLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -16,11 +17,23 @@ namespace HotelProject.DataAccessLayer.EntitiyFramework
         public EfAppUserDal(Context context) : base(context) { }
 
 
-        public List<AppUser> UserListWithWorkLocation()
+        public List<AppUserWithLocationViewModelDal> UserListWithWorkLocation()
         {
             var context = new Context();
-           var values = context.Users.Include(x => x.WorkLocation).ToList();
-            return values;
+	 
+           var values = context.Users.Include(x => x.WorkLocation).Select(y=> new AppUserWithLocationViewModelDal
+           {
+               Name = y.Name,
+               Surname = y.Surname,
+               City = y.City,
+               ImageUrl = y.ImageUrl,
+               WorkLocationID = y.WorkLocationID,
+               WorkLocationName= y.WorkLocation.WorkLocationName,
+               WorkLocationCity= y.WorkLocation.WorkLocationCity,
+               Country = y.Country,
+               Gender = y.Gender,
+           });
+            return values.ToList();
         }
     }
 }
