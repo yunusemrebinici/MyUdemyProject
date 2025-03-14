@@ -15,5 +15,7 @@ namespace HotelProject.DataAccessLayer.Abstract
 
 		void BookingWaitforReservation(int id);
 
+		 Task<int> GetBookingCount();
+
 	}
 }

@@ -2,6 +2,7 @@
 using HotelProject.DataAccessLayer.Concrete;
 using HotelProject.DataAccessLayer.Repositories;
 using HotelProject.EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,33 +14,41 @@ namespace HotelProject.DataAccessLayer.EntitiyFramework
 {
     public class EfBookingDal:GenericRepository<Booking>,IBookingDal
     {
-        public EfBookingDal(Context context) : base(context)
-        {
-            
-        }
+		private readonly Context _context;
+
+		public EfBookingDal(Context context) : base(context)
+		{
+			_context = context;
+		}
 
 		public void BookingAdminStatusTrue(int id)
 		{
-			var context = new Context();
-            var values = context.Bookings.Find(id);
+			
+            var values = _context.Bookings.Find(id);
             values.Status = "Onaylandı";
-            context.SaveChanges();
+            _context.SaveChanges();
 		}
 
 		public void BookingReservationCanceled(int id)
 		{
-			var context = new Context();
-			var values = context.Bookings.Find(id);
+			
+			var values = _context.Bookings.Find(id);
 			values.Status = "İptal Edildi";
-			context.SaveChanges();
+			_context.SaveChanges();
 		}
 
 		public void BookingWaitforReservation(int id)
 		{
-			var context = new Context();
-			var values = context.Bookings.Find(id);
+			
+			var values = _context.Bookings.Find(id);
 			values.Status = "Beklemede,Müşteri Aranacak";
-			context.SaveChanges();
+			_context.SaveChanges();
+		}
+
+		public  async Task <int> GetBookingCount()
+		{
+					 
+			return await _context.Bookings.CountAsync();
 		}
 	}
 }

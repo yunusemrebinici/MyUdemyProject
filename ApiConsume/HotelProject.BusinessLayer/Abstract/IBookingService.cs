@@ -14,5 +14,7 @@ namespace HotelProject.BusinessLayer.Abstract
 		void TBookingReservationCanceled(int id);
 
 		void TBookingWaitforReservation(int id);
+
+		Task<int> TGetBookingCount();
 	}
 }

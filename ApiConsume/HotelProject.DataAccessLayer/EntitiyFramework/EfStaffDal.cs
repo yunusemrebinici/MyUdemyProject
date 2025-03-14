@@ -2,6 +2,7 @@
 using HotelProject.DataAccessLayer.Concrete;
 using HotelProject.DataAccessLayer.Repositories;
 using HotelProject.EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,16 +13,15 @@ namespace HotelProject.DataAccessLayer.EntitiyFramework
 {
 	public class EfStaffDal :GenericRepository<Staff>,IStaffDal
 	{
+		private readonly Context _context;
         public EfStaffDal(Context context) :base (context)
         {
-                
+			_context = context;
         }
 
-		public int GetStaffCount()
-		{
-			var context= new Context();
-			var values = context.Staff.Count();
-			return values;
+		public  async Task< int> GetStaffCount()
+		{				
+			return await _context.Staff.CountAsync();
 		}
 	}
 }

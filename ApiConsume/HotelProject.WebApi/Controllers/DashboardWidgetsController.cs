@@ -12,15 +12,23 @@ namespace HotelProject.WebApi.Controllers
 
 
 		private readonly IStaffService _staffService;
-        public DashboardWidgetsController(IStaffService staffService)
+		private readonly IBookingService _bookingService;
+        public DashboardWidgetsController(IStaffService staffService, IBookingService bookingService)
         {
             _staffService = staffService;
+			_bookingService = bookingService;
         }
 
 		[HttpGet("GetStaffCount")]
 		public async Task<IActionResult> GetStaffCount()
 		{
-			return  Ok(_staffService.TGetStaffCount());
+			return  Ok(await _staffService.TGetStaffCount());
+		}
+		
+		[HttpGet("GetBookingCount")]
+		public async Task<IActionResult> GetBookingCount()
+		{
+			return  Ok( await _bookingService.TGetBookingCount());
 		}
 
 	}

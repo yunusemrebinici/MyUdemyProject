@@ -39,7 +39,12 @@ namespace HotelProject.BusinessLayer.Concrete
             _bookDal.Delete(t);
         }
 
-        public Booking TGetById(int id)
+		public async Task<int> TGetBookingCount()
+		{
+			return   await _bookDal.GetBookingCount();
+		}
+
+		public Booking TGetById(int id)
         {
             return _bookDal.GetById(id);
         }

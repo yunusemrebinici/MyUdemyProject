@@ -33,9 +33,9 @@ namespace HotelProject.BusinessLayer.Concrete
 			return _staffDal.GetList();
 		}
 
-		public int TGetStaffCount()
+		public async Task< int> TGetStaffCount()
 		{
-			return _staffDal.GetStaffCount();
+			return  await _staffDal.GetStaffCount();
 		}
 
 		public void TInsert(Staff t)
