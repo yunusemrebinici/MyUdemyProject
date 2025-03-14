@@ -46,9 +46,9 @@ namespace HotelProject.WebUI.Mapping
             CreateMap<CreateRoomDto,Room>().ReverseMap();
             CreateMap<UpdateRoomDto,Room>().ReverseMap();
 
-           
-          
+            CreateMap<ResultLast4StaffDto, Staff>().ReverseMap();
 
+           
         }
     }
 }
