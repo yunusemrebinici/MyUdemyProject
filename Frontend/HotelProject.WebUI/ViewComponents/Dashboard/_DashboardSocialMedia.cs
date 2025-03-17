@@ -15,7 +15,7 @@ namespace HotelProject.WebUI.ViewComponents.Dashboard
 			#region linkedln
 
 
-			
+
 			var client = new HttpClient();
 			var request = new HttpRequestMessage
 			{
@@ -31,13 +31,36 @@ namespace HotelProject.WebUI.ViewComponents.Dashboard
 			{
 				response.EnsureSuccessStatusCode();
 				var body = await response.Content.ReadAsStringAsync();
-				LinkedlnFollowersDto linkedlnFollowersDto= JsonConvert.DeserializeObject<LinkedlnFollowersDto>(body);
-				ViewBag.LinkedinConnection=linkedlnFollowersDto.data.connection_count;
+				LinkedlnFollowersDto linkedlnFollowersDto = JsonConvert.DeserializeObject<LinkedlnFollowersDto>(body);
+				ViewBag.LinkedinConnection = linkedlnFollowersDto.data.connection_count;
 				ViewBag.LinledinFollowers = linkedlnFollowersDto.data.follower_count;
 			}
 
 			#endregion
 
+			#region instagram
+
+			
+			var client1 = new HttpClient();
+			var request1 = new HttpRequestMessage
+			{
+				Method = HttpMethod.Get,
+				RequestUri = new Uri("https://instagram-best-experience.p.rapidapi.com/profile?username=nike"),
+				Headers =
+	{
+		{ "x-rapidapi-key", "3c6d0fcd2bmshf14440917df7f17p16a024jsn1677367d9162" },
+		{ "x-rapidapi-host", "instagram-best-experience.p.rapidapi.com" },
+	},
+			};
+			using (var response1 = await client1.SendAsync(request1))
+			{
+				response1.EnsureSuccessStatusCode();
+				var body1 = await response1.Content.ReadAsStringAsync();
+				InstagramFollowersDto instagramFollowers=JsonConvert.DeserializeObject<InstagramFollowersDto>(body1);
+				ViewBag.instagramFollow=instagramFollowers.following_count;
+				ViewBag.instagramFollowers=instagramFollowers.follower_count;
+			}
+			#endregion
 			return View();
 		}
 	}
