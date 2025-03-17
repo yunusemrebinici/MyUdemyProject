@@ -15,5 +15,9 @@ namespace HotelProject.WebUI.Dtos.BookingDtos
 		public DateTime Checkin { get; set; }
 
 		public DateTime CheckOut { get; set; }
+
+		public string Country { get; set; }
+
+		public string City { get; set; }
 	}
 }
