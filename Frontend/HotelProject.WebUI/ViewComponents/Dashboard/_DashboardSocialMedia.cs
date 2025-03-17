@@ -61,6 +61,32 @@ namespace HotelProject.WebUI.ViewComponents.Dashboard
 				ViewBag.instagramFollowers=instagramFollowers.follower_count;
 			}
 			#endregion
+
+			#region twitter 
+
+			
+			var client3 = new HttpClient();
+			var request3 = new HttpRequestMessage
+			{
+				Method = HttpMethod.Get,
+				RequestUri = new Uri("https://twitter32.p.rapidapi.com/getProfile?username=themrey"),
+				Headers =
+	{
+		{ "x-rapidapi-key", "3c6d0fcd2bmshf14440917df7f17p16a024jsn1677367d9162" },
+		{ "x-rapidapi-host", "twitter32.p.rapidapi.com" },
+	},
+			};
+			using (var response3 = await client3.SendAsync(request3))
+			{
+				response3.EnsureSuccessStatusCode();
+				var body3 = await response3.Content.ReadAsStringAsync();
+				TwitterFollowersDto twitterFollowersDto=JsonConvert.DeserializeObject<TwitterFollowersDto>(body3);
+				ViewBag.Xfollow=twitterFollowersDto.data.user_info.friends_count;
+				ViewBag.Xfollowing=twitterFollowersDto.data.user_info.followers_count;
+			}
+
+			#endregion
+
 			return View();
 		}
 	}
