@@ -8,41 +8,41 @@
 						<table class="table table-xs mb-0">
 							<thead>
 								<tr>
-									<th>İsim</th>								
+									<th>İsim</th>
 									<th>Mail</th>
 									<th>Giriş Tarihi</th>
 									<th>Çıkış Tarihi</th>
 									<th>Durumu</th>
-									
+
 								</tr>
 							</thead>
 							<tbody>
 								@foreach (var item in Model)
 								{
-									
-								
-								<tr>
-									<td>@item.Name</td>
-									<td>@item.Mail</td>
-									<td>@item.Checkin</td>
-									<td>@item.CheckOut</td>
-									<td>
-										<div>
-											<div class="progress" style="height: 6px">
-												<div class="progress-bar bg-success" style="width: 50%"></div>
+
+
+									<tr>
+										<td>@item.Name</td>
+										<td>@item.Mail</td>
+										<td>@item.Checkin</td>
+										<td>@item.CheckOut</td>
+										<td>
+											<div>
+												<div class="progress" style="height: 6px"> 
+													<div class="progress-bar bg-success" style="width: 50%"></div>
+												</div>
 											</div>
-										</div>
-									</td>
-									@if (item.Status== "İptal Edildi")
+										</td>
+										@if (item.Status == "İptal Edildi" || item.Status == "Onay Bekleniyor")
 										{
 											<td><i class="fa fa-circle-o text-danger  mr-2"></i> @item.Status</td>
 										}
-									else
-									{
+										else
+										{
 											<td><i class="fa fa-circle-o text-success  mr-2"></i> @item.Status</td>
-									}
-									
-								</tr>
+										}
+
+									</tr>
 								}
 							</tbody>
 						</table>
