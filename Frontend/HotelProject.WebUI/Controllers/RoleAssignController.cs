@@ -27,7 +27,6 @@ namespace HotelProject.WebUI.Controllers
 		}
 
 		[HttpGet]
-
 		public async Task<IActionResult> AssignRole(int id)
 		{
 			var user = _userManager.Users.FirstOrDefault(x => x.Id == id);
